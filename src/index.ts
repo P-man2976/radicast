@@ -8,20 +8,20 @@ import { hideBin } from "yargs/helpers";
 import { Parser } from "m3u8-parser";
 import { NHKStationParams, RadikoStationParams } from "./schema.js";
 import { getRadikoToken } from "./radiko.js";
-import { stationList } from "./radiru.js";
+import { getRadiruStationList } from "./radiru.js";
 import { validator } from "./middleware.js";
 
 const netInfos = networkInterfaces();
 const interfaces = Object.values(netInfos).flatMap((val) => val ?? []);
 const address = interfaces?.find(({ family }) => family === "IPv4")?.address ?? "127.0.0.1";
 
-const argv = yargs(hideBin(process.argv)).option("port", {
+const parser = yargs(hideBin(process.argv)).option("port", {
 	alias: "p",
 	default: 8080,
 	description: "HTTP server port number",
 	type: "number",
-}).argv;
-const port = (await argv).port || 8080;
+});
+const port = parser.parseSync().port || 8080;
 
 const app = express();
 
@@ -81,12 +81,10 @@ app.get("/radiko/m3u8/:stationId", async (req, res) => {
 app.get("/nhk/:areaId/:stationId", validator(NHKStationParams), async (req, res) => {
 	try {
 		const { areaId, stationId } = req.params as NHKStationParams;
+		const stationList = await getRadiruStationList();
 		const streamUrl = stationList.radiru_config.stream_url.data.find(({ area }) => area === areaId)?.[stationId];
 
-		if (!streamUrl) {
-			res.status(404).send();
-			return;
-		}
+		if (!streamUrl) return res.status(404).send();
 
 		const command = ffmpeg()
 			.input(streamUrl)
