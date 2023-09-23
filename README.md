@@ -4,8 +4,6 @@ Radiko / NHKラジオ らじる★らじるの放送を HTTP による mp3 ス�
 
 ## 使い方
 
-### npx から使う
-
 ```bash
 ❯ radicast --help     
 オプション:
@@ -13,6 +11,12 @@ Radiko / NHKラジオ らじる★らじるの放送を HTTP による mp3 ス�
       --version  バージョンを表示                                                   [真偽]
   -p, --port     HTTP server port number                      [数値] [デフォルト: 8080]
 ```
+
+### バイナリをダウンロードして使う
+
+[https://github.com/P-man2976/radicast-pkg](https://github.com/P-man2976/radicast-pkg) に、各プラットフォーム向けの実行ファイルがあります。
+
+### npx から使う
 
 ```bash
 npx radicast
@@ -22,6 +26,8 @@ npx radicast
 
 ```bash
 npm i -g radicast
+
+# Execute without `npx`
 radicast
 ```
 
