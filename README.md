@@ -33,7 +33,11 @@ radicast
 
 ## 各放送局へのパス
 
-### `/nhk/:areaId/:stationId` - NHKラジオ らじる★らじる
+### `/nhk/*` - NHKラジオ らじる★らじる
+
+### `/nhk/stations` - 放送局リスト
+
+#### `/nhk/live/:areaId/:stationId` - ストリーミング
 
 - `areaId` - 放送局
 
@@ -56,7 +60,15 @@ radicast
 |   r2hls   | ラジオ第二 |
 |   fmhls   |   NHK-FM   |
 
-### `/radiko/:stationId` - Radiko（周辺エリアのみ）
+### `/radiko/*` - Radiko
+
+#### `/radiko/stations/:areaId?` - 放送局リスト
+
+- `areaId` - エリアコード
+
+[https://api.radiko.jp/apparea/area](https://api.radiko.jp/apparea/area)のレスポンス中のspanタグに含まれるクラス名がエリアコードです。
+
+### `/radiko/live/:stationId` - ストリーミング（周辺エリアのみ）
 
 - `stationId` - 放送局コード
 
@@ -82,12 +94,12 @@ SiiNunit
 {
 live_stream_def : _nameless.263.4698.8250 {
  stream_data: 194
- stream_data[0]: "http://localhost:8080/nhk/tokyo/r1hls|NHK Radio 1 Tokyo (JOAK)|Country|JP|0|0"
- stream_data[1]: "http://localhost:8080/nhk/tokyo/r2hls|NHK Radio 2 Tokyo (JOAB)|Education|JP|0|0"
- stream_data[2]: "http://localhost:8080/nhk/tokyo/fmhls|NHK-FM Tokyo (JOAK-FM)|Country|JP|0|0"
- stream_data[3]: "http://localhost:8080/radiko/FMT|TOKYO FM (JOAU-FM)||JP|0|0"
- stream_data[4]: "http://localhost:8080/radiko/FMJ|J-WAVE (JOAV-FM)|Music|JP|0|0"
- stream_data[5]: "http://localhost:8080/radiko/NACK5|NACK5 (JODV-FM)||JP|0|0"
+ stream_data[0]: "http://localhost:8080/nhk/live/tokyo/r1hls|NHK Radio 1 Tokyo (JOAK)|Country|JP|0|0"
+ stream_data[1]: "http://localhost:8080/nhk/live/tokyo/r2hls|NHK Radio 2 Tokyo (JOAB)|Education|JP|0|0"
+ stream_data[2]: "http://localhost:8080/nhk/live/tokyo/fmhls|NHK-FM Tokyo (JOAK-FM)|Country|JP|0|0"
+ stream_data[3]: "http://localhost:8080/radiko/live/FMT|TOKYO FM (JOAU-FM)||JP|0|0"
+ stream_data[4]: "http://localhost:8080/radiko/live/FMJ|J-WAVE (JOAV-FM)|Music|JP|0|0"
+ stream_data[5]: "http://localhost:8080/radiko/live/NACK5|NACK5 (JODV-FM)||JP|0|0"
 
  ...other stations...
 }
