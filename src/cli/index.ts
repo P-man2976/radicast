@@ -8,6 +8,8 @@ import { hideBin } from "yargs/helpers";
 import radikoRoute from "./radiko.js";
 import radiruRoute from "./radiru.js";
 
+console.log('[Server] Starting radicast server...')
+
 const parser = yargs(hideBin(process.argv)).option("port", {
 	alias: "p",
 	default: 8080,
