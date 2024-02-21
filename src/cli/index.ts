@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { networkInterfaces } from "os";
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
@@ -8,7 +10,7 @@ import { hideBin } from "yargs/helpers";
 import radikoRoute from "./radiko.js";
 import radiruRoute from "./radiru.js";
 
-console.log('[Server] Starting radicast server...')
+console.log("[Server] Starting radicast server...");
 
 const parser = yargs(hideBin(process.argv)).option("port", {
 	alias: "p",
