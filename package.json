@@ -1,7 +1,7 @@
 {
 	"name": "radicast",
 	"description": "Convert Radiko / NHK radio to mp3 HTTP streaming",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"homepage": "https://github.com/p-man2976/radicast",
 	"repository": {
 		"type": "git",
@@ -13,6 +13,10 @@
 		"nhk"
 	],
 	"exports": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"bin": {
 		"radicast": "./dist/cli/index.js"
 	},
@@ -21,7 +25,8 @@
 	"scripts": {
 		"dev": "tsup --watch --onSuccess \"node dist/cli/index.js\"",
 		"build": "tsc",
-		"start": "node dist/cli/index.js"
+		"start": "node dist/cli/index.js",
+		"prepack": "yarn build"
 	},
 	"devDependencies": {
 		"@types/express": "^4.17.21",

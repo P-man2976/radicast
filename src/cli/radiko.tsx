@@ -1,11 +1,11 @@
 import ffmpeg from "fluent-ffmpeg";
 import { Hono } from "hono";
 import { stream } from "hono/streaming";
-import { getRadikoArea, getRadikoStationList, authRadiko } from "../radiko";
+import { getRadikoArea, getRadikoStationList, authRadiko } from "../radiko.js";
 import { Parser } from "m3u8-parser";
 import { zValidator } from "@hono/zod-validator";
-import { RadikoStationParams } from "../schema";
-import { address, port } from ".";
+import { RadikoStationParams } from "../schema.js";
+import { address, port } from "./index.js";
 import { HTTPException } from "hono/http-exception";
 
 const radikoAuthToken: { token: string | null; expire: Date | null } = {

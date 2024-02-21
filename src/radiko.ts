@@ -1,5 +1,5 @@
-import { RadikoStation } from "./types";
-import { xmlParser } from "./xml-parser";
+import { RadikoStation } from "./types.js";
+import { xmlParser } from "./xml-parser.js";
 
 const authKey = "bcd151073c03b352e1ef2fd66c32209da9ca0afa";
 

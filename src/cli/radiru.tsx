@@ -3,8 +3,8 @@ import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { stream } from "hono/streaming";
 import { zValidator } from "@hono/zod-validator";
-import { NHKStationParams } from "../schema";
-import { getRadiruStationList } from "../radiru";
+import { NHKStationParams } from "../schema.js";
+import { getRadiruStationList } from "../radiru.js";
 
 const app = new Hono();
 
