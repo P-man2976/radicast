@@ -54,3 +54,9 @@ serve({
 	...app,
 	port,
 });
+
+console.log(
+	`[Server] Stations list is available on
+- http://${address}:${port}/nhk/stations
+- http://${address}:${port}/radiko/stations`
+);
